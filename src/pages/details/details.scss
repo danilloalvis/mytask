@@ -1,0 +1,16 @@
+page-details {
+
+p { font-size: 18px; }
+
+
+.button-save
+{
+  width:100% !important;
+  position: absolute;
+  bottom: 0px;
+  margin: 16px;
+}
+
+#container {width:100%; font-size: 0;}
+#left, #middle, #right {display: inline-block; *display: inline; vertical-align: top;}
+}

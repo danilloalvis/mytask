@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Detalhes</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list *ngIf="task">
+
+    <h3>Titulo</h3>
+    <p>{{task.title}}</p>
+
+    <h3>Descrição</h3>
+    <p>{{task.descricao}}</p>
+
+    <h3>Data Inicio</h3>
+    <p>{{task.inicio}}</p>
+
+    <h3>Data Inicio</h3>
+    <p>{{task.fim}}</p>
+
+  </ion-list>
+
+    <h3>Imagem</h3>
+    <div id="container">
+      <img width="140px" height="160px"  src="{{task.imagem}}" item-left/>
+    </div>
+
+
+  <button ion-button class="button button-save">Enviar por E-Mail</button>
+
+</ion-content>

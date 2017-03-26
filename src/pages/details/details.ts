@@ -10,9 +10,10 @@ import { EmailComposer } from '@ionic-native/email-composer';
 })
 export class Details {
   task: any;
+  emailComposer: EmailComposer;
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private emailComposer: EmailComposer) {
+  constructor(public navCtrl: NavController, public navParams: NavParams ) {
     // If we navigated to this page, we will have an item available as a nav param
     this.task = navParams.get('item');
 
@@ -24,7 +25,7 @@ export class Details {
    if(available) {
        let email = {
        subject: 'Cordova Icons',
-       body: 'How are you? Nice greetings from Leipzig',
+       body: this.task.json(),
        isHtml: false
      };
 

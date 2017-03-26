@@ -42,7 +42,7 @@
     <div id="container">
       <div id="middle" item-right>
         <button ion-button (click)="takePicture()">Capturar</button>
-        <button ion-button>Procurar</button>
+        <button ion-button (click)="openGallery()">Procurar</button>
       </div>
       <img width="140px" height="160px" [src]="base64Image" *ngIf="base64Image" item-left/>
     </div>

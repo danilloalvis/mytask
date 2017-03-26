@@ -25,4 +25,18 @@ export class Page2 {
     });
   }
 
+  openGallery (): void {
+  let cameraOptions = {
+    sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+    destinationType: Camera.DestinationType.FILE_URI,
+    quality: 100,
+    encodingType: Camera.EncodingType.JPEG,
+    correctOrientation: true
+  }
+
+  Camera.getPicture(cameraOptions)
+    .then(file_uri => this.base64Image = file_uri,
+    err => console.log(err));
+}
+
 }

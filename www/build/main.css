@@ -24550,6 +24550,11 @@ page-page2 .button-save {
   margin: 16px;
 }
 
+page-page2 img {
+  height: auto;
+  width: 140px;
+}
+
 page-page2 h4 {
   font-weight: normal;
 }

@@ -8,9 +8,26 @@ page-page2 {
     bottom: 0px;
     margin: 16px;
   }
-h4 { font-weight: normal; }
 
-  #container {width:100%; font-size: 0;}
-  #left, #middle, #right {display: inline-block; *display: inline; vertical-align: top;}
+  img{
+    height: auto;
+    width: 140px;
+  }
+
+
+h4 {
+  font-weight: normal;
+}
+
+  #container {
+    width:100%;
+    font-size: 0;
+  }
+
+  #left, #middle, #right {
+    display: inline-block;
+    *display: inline;
+    vertical-align: top;
+  }
 
 }

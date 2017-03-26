@@ -30,12 +30,12 @@
 
   <ion-item class="hide-on-keyboard-open">
     <ion-label floating>Data Inicio</ion-label>
-    <ion-input type="text" disabled="true" (focus)="dateInicio()" (click)="dateInicio()" ></ion-input>
+    <ion-input type="text" disabled="true" (focus)="dateInicio()" (click)="dateInicio()" [(ngModel)]="datainicio" ></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label floating>Data Fim</ion-label>
-    <ion-input type="text" disabled="true" (focus)="dateFim()" (click)="dateFim()" ></ion-input>
+    <ion-input type="text" disabled="true" (focus)="dateFim()" (click)="dateFim()" [(ngModel)]="datafim" ></ion-input>
   </ion-item>
 
     <h4>Imagem</h4>

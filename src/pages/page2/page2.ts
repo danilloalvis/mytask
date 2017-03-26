@@ -33,7 +33,7 @@ export class Page2 {
       mode: 'date',
       androidTheme: DatePicker.ANDROID_THEMES.THEME_DEVICE_DEFAULT_LIGHT
     }).then(
-      date =>{  this.datafim = date.toString()},
+      date =>{  this.datafim = date.toLocaleDateString("pt-BR")},
       err =>{ console.log('Error occurred while getting date: ', err)}
     );
   }
@@ -44,7 +44,7 @@ export class Page2 {
       mode: 'date',
       androidTheme: DatePicker.ANDROID_THEMES.THEME_DEVICE_DEFAULT_LIGHT
     }).then(
-      date =>{  this.datainicio = date.toString()},
+      date =>{  this.datainicio = date.toLocaleDateString("pt-BR")},
       err =>{ console.log('Error occurred while getting date: ', err)}
     );
   }

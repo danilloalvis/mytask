@@ -24522,10 +24522,13 @@ page-details p {
 }
 
 page-details .button-save {
-  width: 100% !important;
-  position: absolute;
-  bottom: 0px;
+  width: 100%;
   margin: 16px;
+}
+
+page-details img {
+  height: auto;
+  width: 140px;
 }
 
 page-details #container {
@@ -24544,9 +24547,7 @@ page-page1 .item-content {
 }
 
 page-page2 .button-save {
-  width: 100% !important;
-  position: absolute;
-  bottom: 0px;
+  width: 100%;
   margin: 16px;
 }
 
@@ -24555,7 +24556,8 @@ page-page2 img {
   width: 140px;
 }
 
-page-page2 h4 {
+page-page2 h5 {
+  color: #969696;
   font-weight: normal;
 }
 

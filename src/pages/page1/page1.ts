@@ -1,37 +1,39 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Details } from '../details/details';
+import {HttpProvider} from '../../providers/http-provider';
 
 
 @Component({
   selector: 'page-page1',
-  templateUrl: 'page1.html'
+  templateUrl: 'page1.html',
+  providers:[HttpProvider]
 })
 export class Page1 {
+  items: any;
 
 
-  items: Array<{
-    title: string,
-    descricao: string,
-    inicio: string,
-    fim: string,
-    imagem: string
-  }>;
+  constructor(public navCtrl: NavController, private httpProvider :HttpProvider){
 
-  constructor(public navCtrl: NavController) {
-
-
-    this.items = [];
-    for (let i = 1; i < 11; i++) {
-      this.items.push({
-        title: 'Aniversario ' + i,
-        descricao: 'Legal',
-        inicio: '01/04/1994',
-        fim: '01/04/2017',
-        imagem: 'https://dw9to29mmj727.cloudfront.net/misc/newsletter-naruto3.png'
-      });
-    }
+    this.getdata();
   }
+
+  getdata(){
+
+  this.httpProvider.getJsonData().subscribe(
+    result => {
+      this.items=result;
+      console.log("Success : "+this.items);
+    },
+    err =>{
+      console.error("Error : "+err);
+    } ,
+    () => {
+      console.log('getData completed');
+    }
+  );
+}
+
 
   itemTapped(event, item) {
     // That's right, we're pushing to ourselves!

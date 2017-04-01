@@ -16,7 +16,7 @@ export class HttpProvider {
   }
 
   getJsonData(){
-    return this.http.get('https://torquato-api.herokuapp.com/api/v1/tasks').map(res => res.json());
+    return this.http.get('https://arvantech.com/torquato_api/api.php').map(res => res.json());
   }
 
 }

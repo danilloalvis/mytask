@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="secondary">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
@@ -14,19 +14,19 @@
     <p>{{task.title}}</p>
 
     <h3>Descrição</h3>
-    <p>{{task.descricao}}</p>
+    <p>{{task.description}}</p>
 
     <h3>Data Inicio</h3>
-    <p>{{task.inicio}}</p>
+    <p>{{task.start_date}}</p>
 
     <h3>Data Inicio</h3>
-    <p>{{task.fim}}</p>
+    <p>{{task.end_date}}</p>
 
   </ion-list>
 
     <h3>Imagem</h3>
     <div id="container">
-      <img width="140px" height="140px"  src="{{task.imagem}}" item-left/>
+      <img width="140px" height="140px"  src="https://arvantech.com/torquato_api/{{task.img}}" item-left/>
     </div>
 
 

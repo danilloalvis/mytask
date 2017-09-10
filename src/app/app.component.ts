@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import { Nav, Platform, ToastController  } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { LoadingController } from 'ionic-angular';
@@ -24,7 +24,14 @@ export class MyApp {
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private httpProvider :HttpProvider, private loadingController: LoadingController,private storage: Storage){
+  constructor(
+    public platform: Platform,
+    public statusBar: StatusBar,
+    public splashScreen: SplashScreen, 
+    private httpProvider :HttpProvider, 
+    private loadingController: LoadingController,
+    private toast: ToastController,
+    private storage: Storage){
     this.initializeApp();
 this.statusBar.backgroundColorByHexString('#3F51B5');
     // used for an example of ngFor and navigation
@@ -45,11 +52,20 @@ this.statusBar.backgroundColorByHexString('#3F51B5');
     });
   }
 
+
   showToast(message) {
-    this.platform.ready().then(() => {
-      window.plugins.toast.show(message, "short", "center");
-    });
-  }
+  let toast = this.toast.create({
+    message: message,
+    duration: 3000,
+    position: 'center'
+  });
+
+  toast.onDidDismiss(() => {
+    console.log('Dismissed toast');
+  });
+
+  toast.present();
+}
 
   openPage(page) {
     // Reset the content nav to have just this page
@@ -61,7 +77,6 @@ this.statusBar.backgroundColorByHexString('#3F51B5');
       this.nav.setRoot(Page2);
       this.currentPage = Page2;
     }else if(page.title == "Sincronizar"){
-      this.nav.setRoot(this.currentPage);
       this.updatedata();
     }
   }

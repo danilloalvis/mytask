@@ -5,7 +5,7 @@ import { Page1 } from '../pages/page1/page1';
 import { Page2 } from '../pages/page2/page2';
 import { Details } from '../pages/details/details';
 import { IonicStorageModule } from '@ionic/storage';
-
+import { HttpModule} from '@angular/http';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -18,6 +18,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   ],
   imports: [
     IonicModule.forRoot(MyApp),
+     HttpModule,
     IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],

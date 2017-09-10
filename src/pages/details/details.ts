@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-
+import moment from 'moment';
 import { NavController, NavParams } from 'ionic-angular';
-import { EmailComposer } from '@ionic-native/email-composer';
+//import { EmailComposer } from '@ionic-native/email-composer';
 
 
 @Component({
@@ -10,11 +10,11 @@ import { EmailComposer } from '@ionic-native/email-composer';
 })
 export class Details {
   task: any;
-  emailComposer: EmailComposer;
+  //emailComposer: EmailComposer;
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams ) {
-    // If we navigated to this page, we will have an item available as a nav param
+    console.log("Navegação de Paginas Fim : "+ this.getDateNow());
     this.task = navParams.get('item');
 
   }
@@ -23,8 +23,12 @@ export class Details {
     return "https://arvantech.com/torquato_api/images/"+this.task.img;
   }
 
-  sendMail(){
+   getDateNow(){
+  return moment().format('DD-MM-YYYY HH:mm:ss SSS');
+  }
 
+  sendMail(){
+/*
     this.emailComposer.isAvailable().then((available: boolean) =>{
    if(available) {
        let email = {
@@ -38,7 +42,7 @@ export class Details {
      }
   });
 
-
+*/
   }
 
 

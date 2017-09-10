@@ -2,28 +2,36 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { LoadingController } from 'ionic-angular';
+import {HttpProvider} from '../providers/http-provider';
+import { Storage } from '@ionic/storage';
 
 import { Page1 } from '../pages/page1/page1';
 import { Page2 } from '../pages/page2/page2';
 
+declare var window: any;
 
 @Component({
-  templateUrl: 'app.html'
+  templateUrl: 'app.html',
+  providers:[HttpProvider]
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   rootPage: any = Page1;
+  currentPage: any;
+
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private httpProvider :HttpProvider, private loadingController: LoadingController,private storage: Storage){
     this.initializeApp();
-
+this.statusBar.backgroundColorByHexString('#3F51B5');
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Tarefas', component: Page1 },
       { title: 'Nova Tarefa', component: Page2 },
+      { title: 'Sincronizar', component: Page1 },
     ];
 
   }
@@ -37,9 +45,54 @@ export class MyApp {
     });
   }
 
+  showToast(message) {
+    this.platform.ready().then(() => {
+      window.plugins.toast.show(message, "short", "center");
+    });
+  }
+
   openPage(page) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
-    this.nav.setRoot(page.component);
+    if(page.title == "Tarefas"){
+      this.nav.setRoot(Page1);
+      this.currentPage = Page1;
+    }else if(page.title == "Nova Tarefa"){
+      this.nav.setRoot(Page2);
+      this.currentPage = Page2;
+    }else if(page.title == "Sincronizar"){
+      this.nav.setRoot(this.currentPage);
+      this.updatedata();
+    }
   }
+
+  updatedata(){
+    let loader = this.loadingController.create({
+      content: "Aguarde..."
+    });
+    loader.present();
+
+    this.httpProvider.getJsonData().subscribe(
+      result => {
+        var items = result;
+        console.log("Success : "+ JSON.stringify(items));
+        this.storage.ready().then(() => {
+          this.storage.set('mytask', JSON.stringify(items));
+          loader.dismiss()
+          this.showToast("Tarefas Atualizado com Sucesso!");
+        });
+      },
+      err =>{
+        console.error("Error : "+err);
+          loader.dismiss();
+          this.showToast("Falha ao tentar atualizar tarefas!");
+      } ,
+      () => {
+        console.log('getData completed');
+
+      }
+    );
+
+  }
+
 }

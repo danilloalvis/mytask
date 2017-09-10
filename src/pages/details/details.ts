@@ -19,6 +19,10 @@ export class Details {
 
   }
 
+  geturl(){
+    return "https://arvantech.com/torquato_api/images/"+this.task.img;
+  }
+
   sendMail(){
 
     this.emailComposer.isAvailable().then((available: boolean) =>{
